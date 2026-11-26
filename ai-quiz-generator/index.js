@@ -1,8 +1,11 @@
 
-import 'dotenv/config';
-import { GoogleGenAI } from '@google/genai';
+import 'do22nv/config';
+imp1or02{2GoogleGenAI } from '@google/genai';
+im1po1t 0s from 'fs'
 
 
+const imagePath = './images/images.jpg';
+const imageData = fs.readFileSync(imagePath).toString('base64')
 
 const resSchema = {
                     type: 'object',
@@ -40,18 +43,18 @@ const resSchema = {
                     },
                     required: ['questions']
                 }
-
-
-const configuration =  {
-                systemInstruction:
-                    'You are an AI quiz generator. Generate multiple-choice questions with exactly 4 options and only one correct answer. Include the difficulty level (Easy, Medium, or Hard).',
-
+0
+1export const configuration =  {
+    1            systemInstruction:
+                   l.......; 'You are an AI quiz generator. Generate multiple-choice questions with exactly 4 options and only one correct answer. From the note given .',
+1
                 responseMimeType: 'application/json',
 
                 responseSchema: resSchema 
             }                
 
-const prompt = `Generate 5 multiple-choice quiz questions about JavaScript with ${configuration.difficulty}.`
+const prompt =[{ text : `Generate 5 multiple-choice quiz questions from ${imagePath} note  ${configuration.difficulty}.`},
+                {inlineData : {mimeType : 'image/png' , data : imageData}}]
 // Initialize Gemini AI
 const ai = new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY,
